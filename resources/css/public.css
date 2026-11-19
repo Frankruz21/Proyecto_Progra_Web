@@ -1,0 +1,871 @@
+/* =========================================================
+   UNILEARNING - ESTILOS DEL PORTAL PÚBLICO
+   Bootstrap 5 + Bootstrap Icons
+   ========================================================= */
+
+/* Bootstrap */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Bootstrap Icons */
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+
+/* =========================================================
+   VARIABLES DE UNILEARNING
+   ========================================================= */
+
+:root {
+    --unilearning-blue: #143D60;
+    --unilearning-petroleum: #27667B;
+    --unilearning-green: #A0C878;
+    --unilearning-light-green: #DDEB9D;
+    --unilearning-gray: #F5F7FA;
+
+    --unilearning-dark: #17324D;
+    --unilearning-text: #667085;
+}
+
+
+/* =========================================================
+   CONFIGURACIÓN GENERAL
+   ========================================================= */
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff;
+    color: var(--unilearning-text);
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   NAVBAR PÚBLICO
+   ========================================================= */
+
+.public-navbar {
+    background-color: #ffffff;
+    padding: 15px 0;
+    border-bottom: 1px solid #edf0f4;
+}
+
+.public-navbar .navbar-brand {
+    color: var(--unilearning-blue);
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+.public-navbar .navbar-brand i {
+    color: var(--unilearning-petroleum);
+    margin-right: 8px;
+}
+
+.public-navbar .nav-link {
+    color: var(--unilearning-dark);
+    font-weight: 500;
+    padding: 10px 16px;
+    transition: color 0.2s ease;
+}
+
+.public-navbar .nav-link:hover {
+    color: var(--unilearning-petroleum);
+}
+
+.public-navbar .nav-link.active {
+    color: var(--unilearning-petroleum);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BOTONES
+   ========================================================= */
+
+.btn-unilearning {
+    background-color: var(--unilearning-blue);
+    color: #ffffff;
+    border: 1px solid var(--unilearning-blue);
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.btn-unilearning:hover {
+    background-color: var(--unilearning-petroleum);
+    border-color: var(--unilearning-petroleum);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.btn-unilearning-outline {
+    background-color: transparent;
+    color: var(--unilearning-blue);
+    border: 1px solid var(--unilearning-blue);
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.btn-unilearning-outline:hover {
+    background-color: var(--unilearning-blue);
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   HERO PRINCIPAL
+   ========================================================= */
+
+.home-hero {
+    background:
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(160, 200, 120, 0.22),
+            transparent 35%
+        ),
+        linear-gradient(135deg, #f5f8fc, #ffffff);
+    overflow: hidden;
+}
+
+.hero-badge {
+    background-color: var(--unilearning-light-green);
+    color: var(--unilearning-blue);
+    padding: 9px 16px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.hero-title {
+    color: var(--unilearning-blue);
+    font-size: clamp(2.5rem, 5vw, 4.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+.hero-title span {
+    color: var(--unilearning-petroleum);
+    display: block;
+}
+
+.hero-description {
+    color: #667085;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 550px;
+}
+
+.hero-stats h3 {
+    color: var(--unilearning-blue);
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.hero-stats p {
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+
+/* =========================================================
+   VISUAL DEL HERO
+   ========================================================= */
+
+.hero-visual {
+    position: relative;
+    min-height: 470px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-circle {
+    position: absolute;
+    width: 420px;
+    height: 420px;
+    max-width: 100%;
+    background: linear-gradient(
+        135deg,
+        var(--unilearning-light-green),
+        var(--unilearning-green)
+    );
+    border-radius: 50%;
+    opacity: 0.65;
+}
+
+.learning-card {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 430px;
+    background-color: white;
+    border-radius: 22px;
+    padding: 30px;
+    box-shadow: 0 20px 50px rgba(20, 61, 96, 0.15);
+}
+
+.learning-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.learning-label {
+    color: #8490a0;
+    font-size: 0.85rem;
+}
+
+.learning-card-header h4 {
+    color: var(--unilearning-blue);
+    font-weight: 700;
+    margin-top: 5px;
+}
+
+.learning-icon {
+    width: 55px;
+    height: 55px;
+    background-color: var(--unilearning-blue);
+    color: white;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.learning-progress span {
+    color: #6c757d;
+}
+
+.learning-progress strong {
+    color: var(--unilearning-petroleum);
+}
+
+.learning-card .progress {
+    height: 9px;
+    background-color: #e9ecef;
+    border-radius: 50px;
+}
+
+.learning-card .progress-bar {
+    background-color: var(--unilearning-green);
+    border-radius: 50px;
+}
+
+.learning-course {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: #f8fafc;
+    padding: 14px;
+    border-radius: 12px;
+}
+
+.course-icon {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+    background-color: #e3eff7;
+    color: var(--unilearning-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.25rem;
+}
+
+.course-icon.green {
+    background-color: #edf5e5;
+    color: #608b38;
+}
+
+.learning-course h6 {
+    color: var(--unilearning-blue);
+    font-weight: 600;
+    margin-bottom: 3px;
+}
+
+.learning-course small {
+    color: #8a94a3;
+}
+
+.learning-course > i {
+    color: var(--unilearning-petroleum);
+}
+
+
+/* =========================================================
+   TARJETA FLOTANTE DEL HERO
+   ========================================================= */
+
+.hero-floating-card {
+    position: absolute;
+    z-index: 3;
+    bottom: 15px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: white;
+    padding: 15px 20px;
+    border-radius: 15px;
+    box-shadow: 0 12px 35px rgba(20, 61, 96, 0.15);
+}
+
+.floating-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    background-color: var(--unilearning-light-green);
+    color: var(--unilearning-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+}
+
+.hero-floating-card strong {
+    color: var(--unilearning-blue);
+}
+
+.hero-floating-card p {
+    color: #6c757d;
+    font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   BUSCADOR
+   ========================================================= */
+
+.search-section {
+    position: relative;
+    z-index: 4;
+    margin-top: -35px;
+}
+
+.search-box {
+    background-color: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 10px 35px rgba(20, 61, 96, 0.12);
+}
+
+.search-input-group {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.search-input-group .input-group-text {
+    background-color: white;
+    border: none;
+    color: var(--unilearning-petroleum);
+}
+
+.search-input-group .form-control {
+    border: none;
+    box-shadow: none;
+    padding: 13px;
+}
+
+
+/* =========================================================
+   SECCIONES GENERALES
+   ========================================================= */
+
+.courses-section {
+    background-color: white;
+}
+
+.benefits-section,
+.testimonials-section {
+    background-color: var(--unilearning-gray);
+}
+
+.section-eyebrow {
+    color: var(--unilearning-petroleum);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+}
+
+.section-title {
+    color: var(--unilearning-blue);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 800;
+}
+
+.section-description {
+    color: #6c757d;
+    max-width: 650px;
+    margin: 15px auto 0;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   TARJETAS DE CURSOS
+   ========================================================= */
+
+.course-card {
+    background-color: white;
+    border: 1px solid #e8edf2;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(20, 61, 96, 0.05);
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.course-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 35px rgba(20, 61, 96, 0.12);
+}
+
+.course-image {
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.course-image-blue {
+    background: linear-gradient(135deg, #143d60, #27667b);
+}
+
+.course-image-green {
+    background: linear-gradient(135deg, #608b38, #a0c878);
+}
+
+.course-image-petroleum {
+    background: linear-gradient(135deg, #27667b, #143d60);
+}
+
+.course-image-content {
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.course-image-content i {
+    font-size: 4rem;
+    margin-bottom: 10px;
+}
+
+.course-image-content span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.course-category {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background-color: white;
+    color: var(--unilearning-blue);
+    padding: 6px 12px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.course-card-body {
+    padding: 22px;
+}
+
+.course-rating {
+    color: #f5b700;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.course-rating span {
+    color: #8a94a3;
+    font-weight: 400;
+}
+
+.course-card-body h5 {
+    color: var(--unilearning-blue);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.course-card-body > p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    min-height: 55px;
+}
+
+.course-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    color: #7b8794;
+    font-size: 0.8rem;
+    padding: 15px 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.course-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 15px;
+}
+
+.course-card-footer small {
+    display: block;
+    color: #8a94a3;
+}
+
+.course-card-footer strong {
+    color: var(--unilearning-blue);
+    font-size: 0.85rem;
+}
+
+.course-price {
+    color: var(--unilearning-petroleum);
+    font-size: 1.25rem;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   BENEFICIOS
+   ========================================================= */
+
+.benefit-card {
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px 22px;
+    height: 100%;
+    border: 1px solid #e8edf2;
+    transition: transform 0.25s;
+}
+
+.benefit-card:hover {
+    transform: translateY(-5px);
+}
+
+.benefit-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.7rem;
+    margin: 0 auto 20px;
+}
+
+.benefit-icon.blue {
+    background-color: #e3eff7;
+    color: var(--unilearning-blue);
+}
+
+.benefit-icon.green {
+    background-color: #edf5e5;
+    color: #608b38;
+}
+
+.benefit-icon.petroleum {
+    background-color: #e5f1f3;
+    color: var(--unilearning-petroleum);
+}
+
+.benefit-icon.light-green {
+    background-color: #f2f8e5;
+    color: #608b38;
+}
+
+.benefit-card h5 {
+    color: var(--unilearning-blue);
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.benefit-card p {
+    color: #6c757d;
+    font-size: 0.9rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   SECCIÓN NOSOTROS
+   ========================================================= */
+
+.about-section {
+    background-color: white;
+}
+
+.about-visual {
+    position: relative;
+    min-height: 370px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-main-card {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(135deg, #143d60, #27667b);
+    color: white;
+    border-radius: 25px;
+    padding: 45px;
+    width: 85%;
+    box-shadow: 0 20px 45px rgba(20, 61, 96, 0.18);
+}
+
+.about-main-card > i {
+    color: var(--unilearning-light-green);
+    font-size: 3.5rem;
+}
+
+.about-main-card h3 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 25px 0 15px;
+}
+
+.about-main-card p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.about-decoration {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: var(--unilearning-light-green);
+    border-radius: 50%;
+    bottom: 10px;
+    right: 10px;
+    opacity: 0.6;
+}
+
+.text-petroleum {
+    color: var(--unilearning-petroleum);
+}
+
+.about-description {
+    color: #6c757d;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   TESTIMONIOS
+   ========================================================= */
+
+.testimonial-card {
+    background-color: white;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #e8edf2;
+    box-shadow: 0 5px 20px rgba(20, 61, 96, 0.04);
+}
+
+.testimonial-stars {
+    color: #f5b700;
+    margin-bottom: 18px;
+}
+
+.testimonial-card > p {
+    color: #667085;
+    line-height: 1.8;
+    font-style: italic;
+}
+
+.testimonial-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.testimonial-avatar {
+    width: 45px;
+    height: 45px;
+    background-color: #e3eff7;
+    color: var(--unilearning-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.testimonial-avatar.green {
+    background-color: #edf5e5;
+    color: #608b38;
+}
+
+.testimonial-avatar.petroleum {
+    background-color: #e5f1f3;
+    color: var(--unilearning-petroleum);
+}
+
+.testimonial-user strong {
+    display: block;
+    color: var(--unilearning-blue);
+    font-size: 0.9rem;
+}
+
+.testimonial-user small {
+    color: #8a94a3;
+}
+
+
+/* =========================================================
+   CALL TO ACTION
+   ========================================================= */
+
+.cta-section {
+    background-color: white;
+}
+
+.cta-card {
+    background: linear-gradient(135deg, #143d60, #27667b);
+    padding: 55px 25px;
+    border-radius: 25px;
+    color: white;
+}
+
+.cta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    background-color: var(--unilearning-light-green);
+    color: var(--unilearning-blue);
+    border-radius: 18px;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+.cta-card h2 {
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.cta-card p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 25px;
+}
+
+
+/* =========================================================
+   FOOTER PÚBLICO
+   ========================================================= */
+
+.public-footer {
+    background-color: var(--unilearning-blue);
+    color: white;
+    padding: 50px 0 20px;
+}
+
+.public-footer h5 {
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.public-footer p {
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.7;
+}
+
+.public-footer a {
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.2s ease;
+}
+
+.public-footer a:hover {
+    color: var(--unilearning-light-green);
+}
+
+.public-footer .footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 30px;
+    padding-top: 20px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 991px) {
+
+    .hero-visual {
+        min-height: 420px;
+        margin-top: 30px;
+    }
+
+    .hero-floating-card {
+        left: 5%;
+    }
+
+    .search-section {
+        margin-top: 0;
+        padding-top: 20px;
+    }
+
+}
+
+@media (max-width: 576px) {
+
+    .hero-title {
+        font-size: 2.4rem;
+    }
+
+    .hero-visual {
+        min-height: 350px;
+    }
+
+    .hero-circle {
+        width: 320px;
+        height: 320px;
+    }
+
+    .learning-card {
+        padding: 20px;
+    }
+
+    .hero-floating-card {
+        bottom: 0;
+        padding: 12px;
+    }
+
+    .about-main-card {
+        padding: 30px;
+    }
+
+    .about-main-card h3 {
+        font-size: 1.6rem;
+    }
+
+}
