@@ -15,5 +15,11 @@
     },
     "optionalDependencies": {
         "@laravel/multiplex": "^0.4.1"
+    },
+    "dependencies": {
+        "admin-lte": "^4.10.2",
+        "bootstrap": "^5.3.9",
+        "bootstrap-icons": "^1.13.2",
+        "overlayscrollbars": "^2.17.1"
     }
 }
