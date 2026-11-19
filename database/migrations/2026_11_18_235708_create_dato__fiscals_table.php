@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('datos_fiscales', function (Blueprint $table) {
             $table->id();
             $table->string('nombre_razon_social');
-            $table->string('rtn')->unique();
+            $table->string('rtn');
             $table->text('direccion');
-            $table->string('correo')->unique();
-            $table->string('telefono')->unique();
+            $table->string('correo');
+            $table->string('telefono');
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->timestamps();
         });
