@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('referencia', 100)->nullable();
             $table->string('ultimos_4', 4)->nullable();   // nunca guardar el número completo de la tarjeta
             $table->decimal('monto', 12, 2);
-            $table->string('estado', 20)->default('pendiente');   // pendiente / aprobado / rechazado
+            $table->enum('estado', ['pendiente', 'aprobado', 'rechazado'])->default('pendiente');
             $table->dateTime('fecha_pago')->nullable();
             $table->timestamps();
         });
