@@ -6,5 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Nivel extends Model
 {
-    //
+    protected $fillable = [
+        'nombre',
+        'orden',
+    ]; 
 }

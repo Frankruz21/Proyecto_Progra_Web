@@ -17,10 +17,10 @@ return new class extends Migration
             $table->string('nombre2', 100)->nullable();
             $table->string('apellido1', 100);
             $table->string('apellido2', 100)->nullable();
-            $table->string('email')->unique();
+            $table->string('email', 150)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('telefono', 20);
+            $table->string('telefono', 20)->nullable()->unique();
             $table->string('fotografia')->nullable();
             $table->boolean('activo')->default(true);
             $table->rememberToken();
