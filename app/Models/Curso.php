@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Curso extends Model
 {
@@ -25,4 +26,18 @@ class Curso extends Model
         'nivel_id',
         'idioma_id',
     ]; 
+    public function matriculas(): HasMany
+    {
+        return $this->hasMany(Matricula::class);
+    }
+
+    public function progresos(): HasMany
+    {
+        return $this->hasMany(Progreso::class);
+    }
+
+    public function certificados(): HasMany
+    {
+        return $this->hasMany(Certificado::class);
+    }
 }
