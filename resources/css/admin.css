@@ -1,0 +1,31 @@
+@import 'admin-lte/dist/css/adminlte.min.css';
+@import 'bootstrap-icons/font/bootstrap-icons.css';
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --unilearning-primary: #143D60;   
+    --unilearning-secondary: #27667B; 
+    --unilearning-accent: #A0C878;   
+    --unilearning-light: #DDEB9D;     
+}
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+/* Sobrescribir colores de AdminLTE con los de tu marca */
+.bg-primary, .btn-primary {
+    background-color: var(--unilearning-primary) !important;
+    border-color: var(--unilearning-primary) !important;
+}
+
+.text-primary {
+    color: var(--unilearning-primary) !important;
+}
+
+.bg-success, .btn-success {
+    background-color: var(--unilearning-accent) !important;
+    border-color: var(--unilearning-accent) !important;
+    color: #000 !important; 
+}

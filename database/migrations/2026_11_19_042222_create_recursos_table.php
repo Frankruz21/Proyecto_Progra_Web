@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('mime_type', 100);
             $table->unsignedBigInteger('tamano_bytes');
             $table->string('ruta');
-            $table->foreignId('subido_por')->nullable()->constrained('users')->nullOnDelete();
+            $table->unsignedBigInteger('subido_por')->nullable();
             $table->timestamps();
         });
     }
