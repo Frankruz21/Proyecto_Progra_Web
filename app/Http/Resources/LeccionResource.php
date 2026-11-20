@@ -7,13 +7,20 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class LeccionResource extends JsonResource
 {
-    /**
-     * Transform the resource into an array.
-     *
-     * @return array<string, mixed>
-     */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'modulo_id' => $this->modulo_id,
+            'titulo' => $this->titulo,
+            'tipo' => $this->tipo,
+            'url_contenido' => $this->url_contenido,
+            'contenido' => $this->contenido,
+            'duracion_min' => $this->duracion_min,
+            'orden' => $this->orden,
+            'es_preview' => $this->es_preview,
+            'created_at' => $this->created_at?->toIso8601String(),
+            'updated_at' => $this->updated_at?->toIso8601String(),
+        ];
     }
 }
