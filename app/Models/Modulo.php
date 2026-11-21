@@ -30,4 +30,9 @@ class Modulo extends Model
     {
         return $this->belongsTo(Curso::class);
     }
+
+    public function lecciones()
+    {
+        return $this->hasMany(Leccion::class);
+    }
 }

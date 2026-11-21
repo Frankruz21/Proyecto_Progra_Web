@@ -9,9 +9,15 @@ use Illuminate\Http\Request;
 
 class LeccionController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $lecciones = Leccion::with('modulo')->orderBy('modulo_id')->orderBy('orden')->get();
+        $query = Leccion::with('modulo.curso')->orderBy('orden');
+
+        if ($request->filled('modulo_id')) {
+            $query->where('modulo_id', $request->modulo_id);
+        }
+
+        $lecciones = $query->get();
         $modulos = Modulo::with('curso')->get(); 
 
         return view('admin.lecciones.index', compact('lecciones', 'modulos'));

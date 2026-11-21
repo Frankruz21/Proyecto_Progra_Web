@@ -9,11 +9,19 @@ use Illuminate\Http\Request;
 
 class ModuloController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $modulos = Modulo::with('curso')->orderBy('orden')->get();
-        $cursos = Curso::all(); // <-- Asegúrate de tener esto
-        return view('admin.modulos.index', compact('modulos', 'cursos'));
+        $query = Modulo::with('curso')->orderBy('orden');
+
+        //filtramos los módulos de ese curso
+        if ($request->filled('curso_id')) {
+            $query->where('curso_id', $request->curso_id);
+        }
+        $modulos = $query->get();
+        $cursos = Curso::all(); 
+        $cursoSeleccionado = $request->filled('curso_id') ? Curso::find($request->curso_id) : null;
+
+        return view('admin.modulos.index', compact('modulos', 'cursos', 'cursoSeleccionado'));
     }
 
     public function create()
