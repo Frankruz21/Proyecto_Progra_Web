@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre1', 100);
-            $table->string('nombre2', 100)->nullable();
-            $table->string('apellido1', 100);
-            $table->string('apellido2', 100)->nullable();
+            $table->string('primer_nombre', 100);
+            $table->string('segundo_nombre', 100)->nullable();
+            $table->string('primer_apellido', 100);
+            $table->string('segundo_apellido', 100)->nullable();
             $table->string('email', 150)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -26,7 +26,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->foreignId('rol_id')->constrained('roles')->restrictOnDelete();
             $table->timestamps();
-
 
         });
 
