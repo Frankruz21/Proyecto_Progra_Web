@@ -198,13 +198,6 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ route('admin.recursos.index') }}" class="nav-link {{ request()->routeIs('admin.recursos.*') ? 'active' : '' }}">
-                                <i class="nav-icon bi bi-paperclip"></i>
-                                <p>Recursos</p>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon bi bi-people"></i>
                                 <p>Usuarios</p>

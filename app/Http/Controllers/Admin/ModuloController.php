@@ -64,4 +64,14 @@ class ModuloController extends Controller
         return redirect()->route('admin.modulos.index')
             ->with('success', 'Módulo eliminado correctamente.');
     }
+
+    public function contenido(Modulo $modulo)
+    {
+        // Cargamos las lecciones y recursos de ESTE módulo
+        $lecciones = $modulo->lecciones()->orderBy('orden')->get();
+        $recursos = \App\Models\Recurso::where('curso_id', $modulo->curso_id)->get(); 
+
+        // Retornamos SOLO el HTML, sin el layout (sin @extends)
+        return view('admin.modulos.contenido', compact('modulo', 'lecciones', 'recursos'));
+    }
 }

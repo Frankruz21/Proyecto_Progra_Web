@@ -1,0 +1,12 @@
+{
+    "modulo": "Módulo 1: Fundamentos",
+    "lecciones": [
+        { "titulo": "1. Introducción a Laravel", "tipo": "video" },
+        { "titulo": "2. Instalación", "tipo": "lectura" },
+        { "titulo": "3. Estructura del proyecto", "tipo": "video" }
+    ],
+    "recursos": [
+        { "titulo": "Guía de instalación.pdf", "tipo": "guia" },
+        { "titulo": "Código fuente ejemplo.zip", "tipo": "codigo_fuente" }
+    ]
+}

@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Solicitud_Instructor extends Model
 {
     protected $fillable = [
-        'nombre1',
-        'nombre2',
-        'apellido1',
-        'apellido2',
+        'primer_nombre',
+        'segundo_nombre',
+        'primer_apellido',
+        'segundo_apellido',
         'email',
         'especialidad',
         'biografia',

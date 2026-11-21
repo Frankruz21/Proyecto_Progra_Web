@@ -49,6 +49,11 @@
                             
                             <td class="text-end">
                                 <div class="btn-group shadow-sm" role="group">
+                                    <!-- BOTÓN PARA CARGAR CONTENIDO VÍA AJAX -->
+                                    <button class="btn btn-sm btn-outline-info btn-ver-modulo" data-id="{{ $modulo->id }}" title="Ver Lecciones">
+                                        <i class="bi bi-eye"></i>
+                                    </button>
+
                                     <a href="{{ route('admin.modulos.edit', $modulo) }}" class="btn btn-sm btn-outline-primary" title="Editar">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
@@ -76,6 +81,9 @@
     </div>
 </div>
 
+<!-- CONTENEDOR DONDE SE INYECTARÁ EL CONTENIDO DEL MÓDULO -->
+<div id="contenedor-modulo" class="mt-4"></div>
+
 <!-- MODAL PARA CREAR MÓDULO -->
 <div class="modal fade" id="modalCrearModulo" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -91,7 +99,6 @@
                 
                 <div class="modal-body p-4">
                     <div class="row g-3">
-                        <!-- Curso -->
                         <div class="col-md-12">
                             <label class="form-label fw-semibold text-muted small">Curso al que pertenece</label>
                             <select name="curso_id" class="form-select @error('curso_id') is-invalid @enderror" required>
@@ -105,20 +112,17 @@
                             @error('curso_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
 
-                        <!-- Título -->
                         <div class="col-md-12">
                             <label class="form-label fw-semibold text-muted small">Título del Módulo</label>
                             <input type="text" name="titulo" class="form-control @error('titulo') is-invalid @enderror" value="{{ old('titulo') }}" required>
                             @error('titulo') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
 
-                        <!-- Descripción -->
                         <div class="col-md-12">
                             <label class="form-label fw-semibold text-muted small">Descripción (Opcional)</label>
                             <textarea name="descripcion" class="form-control" rows="3">{{ old('descripcion') }}</textarea>
                         </div>
 
-                        <!-- Orden -->
                         <div class="col-md-12">
                             <label class="form-label fw-semibold text-muted small">Orden</label>
                             <input type="number" name="orden" class="form-control @error('orden') is-invalid @enderror" value="{{ old('orden', 1) }}" required min="1">
@@ -145,5 +149,33 @@
         });
     </script>
 @endif
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const botonesVer = document.querySelectorAll('.btn-ver-modulo');
+        const contenedor = document.getElementById('contenedor-modulo');
+
+        botonesVer.forEach(boton => {
+            boton.addEventListener('click', function() {
+                const moduloId = this.dataset.id;
+                
+                contenedor.innerHTML = '<div class="text-center py-4"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">Cargando contenido del módulo...</p></div>';
+
+                fetch(`/admin/modulos/${moduloId}/contenido`)
+                    .then(response => response.text())
+                    .then(html => {
+                        contenedor.innerHTML = html;
+                        contenedor.scrollIntoView({ behavior: 'smooth' });
+                    })
+                    .catch(error => {
+                        contenedor.innerHTML = '<div class="alert alert-danger">Error al cargar el contenido. Revisa la consola.</div>';
+                        console.error('Error:', error);
+                    });
+            });
+        });
+    });
+</script>
+@endpush
 
 @endsection
