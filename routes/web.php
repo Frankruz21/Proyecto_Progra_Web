@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ModuloController;
 use App\Http\Controllers\Admin\LeccionController;
+use App\Http\Controllers\Cursos\CursoController;
 
 Route::get('/', function () {
     return view('welcome'); 
@@ -14,16 +15,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
         return view('admin.dashboard');
     })->name('dashboard');
 
-    //  Módulos
+    //CURSOS
+    Route::resource('cursos', CursoController::class)->except(['create']);
+    Route::get('mis-cursos', [CursoController::class, 'index'])->name('cursos.instructor');
+
+    //MODULOS
     Route::resource('modulos', ModuloController::class)->except(['create']);
-    
-    // Para cargar el contenido del módulo vía AJAX 
     Route::get('modulos/{modulo}/contenido', [ModuloController::class, 'contenido'])->name('modulos.contenido');
 
-    // Lecciones
+    // LECCIONES
     Route::resource('lecciones', LeccionController::class)->except(['create']);
 });
 
+// Rutas de prueba o públicas
 Route::get('/aula-prueba', function () {
     return view('student.aula.show');
 })->name('aula.prueba');

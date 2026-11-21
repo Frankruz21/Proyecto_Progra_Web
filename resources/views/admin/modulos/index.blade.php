@@ -30,30 +30,23 @@
                     @forelse($modulos as $modulo)
                         <tr>
                             <td class="text-muted fw-bold">#{{ $modulo->id }}</td>
-                            
                             <td>
                                 <span class="badge bg-secondary bg-opacity-10 text-secondary rounded-pill px-3 py-1">
                                     <i class="bi bi-book me-1"></i> {{ $modulo->curso->titulo ?? 'Sin curso' }}
                                 </span>
                             </td>
-                            
                             <td class="fw-medium">{{ $modulo->titulo }}</td>
-                            
                             <td class="text-muted small">
                                 {{ Str::limit($modulo->descripcion ?? 'Sin descripción', 50) }}
                             </td>
-                            
                             <td class="text-center">
                                 <span class="badge bg-light text-dark border px-3 py-1">{{ $modulo->orden }}</span>
                             </td>
-                            
                             <td class="text-end">
                                 <div class="btn-group shadow-sm" role="group">
-                                    <!-- BOTÓN PARA CARGAR CONTENIDO VÍA AJAX -->
                                     <button class="btn btn-sm btn-outline-info btn-ver-modulo" data-id="{{ $modulo->id }}" title="Ver Lecciones">
                                         <i class="bi bi-eye"></i>
                                     </button>
-
                                     <a href="{{ route('admin.modulos.edit', $modulo) }}" class="btn btn-sm btn-outline-primary" title="Editar">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
@@ -64,6 +57,13 @@
                                             <i class="bi bi-trash"></i>
                                         </button>
                                     </form>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="d-none fila-contenido-modulo" id="fila-contenido-{{ $modulo->id }}">
+                            <td colspan="6" class="p-0">
+                                <div class="p-3 bg-light border-bottom">
+                                    <div class="contenido-lecciones" id="contenido-{{ $modulo->id }}"></div>
                                 </div>
                             </td>
                         </tr>
@@ -81,22 +81,15 @@
     </div>
 </div>
 
-<!-- CONTENEDOR DONDE SE INYECTARÁ EL CONTENIDO DEL MÓDULO -->
-<div id="contenedor-modulo" class="mt-4"></div>
-
-<!-- MODAL PARA CREAR MÓDULO -->
 <div class="modal fade" id="modalCrearModulo" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow">
-            
             <form action="{{ route('admin.modulos.store') }}" method="POST">
                 @csrf
-                
                 <div class="modal-header bg-light border-bottom-0">
                     <h5 class="modal-title fw-bold"><i class="bi bi-plus-circle text-success me-2"></i>Crear Nuevo Módulo</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                
                 <div class="modal-body p-4">
                     <div class="row g-3">
                         <div class="col-md-12">
@@ -111,18 +104,15 @@
                             </select>
                             @error('curso_id') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
-
                         <div class="col-md-12">
                             <label class="form-label fw-semibold text-muted small">Título del Módulo</label>
                             <input type="text" name="titulo" class="form-control @error('titulo') is-invalid @enderror" value="{{ old('titulo') }}" required>
                             @error('titulo') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
-
                         <div class="col-md-12">
                             <label class="form-label fw-semibold text-muted small">Descripción (Opcional)</label>
                             <textarea name="descripcion" class="form-control" rows="3">{{ old('descripcion') }}</textarea>
                         </div>
-
                         <div class="col-md-12">
                             <label class="form-label fw-semibold text-muted small">Orden</label>
                             <input type="number" name="orden" class="form-control @error('orden') is-invalid @enderror" value="{{ old('orden', 1) }}" required min="1">
@@ -130,13 +120,11 @@
                         </div>
                     </div>
                 </div>
-                
                 <div class="modal-footer border-top-0 bg-light">
                     <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
                     <button type="submit" class="btn btn-success px-4"><i class="bi bi-save me-1"></i> Guardar Módulo</button>
                 </div>
             </form>
-
         </div>
     </div>
 </div>
@@ -154,28 +142,38 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const botonesVer = document.querySelectorAll('.btn-ver-modulo');
-        const contenedor = document.getElementById('contenedor-modulo');
 
         botonesVer.forEach(boton => {
             boton.addEventListener('click', function() {
                 const moduloId = this.dataset.id;
                 
-                contenedor.innerHTML = '<div class="text-center py-4"><div class="spinner-border text-primary" role="status"></div><p class="mt-2">Cargando contenido del módulo...</p></div>';
+                // Buscamos la fila oculta para un modulo específico
+                const fila = document.getElementById(`fila-contenido-${moduloId}`);
+                const contenedor = document.getElementById(`contenido-${moduloId}`);
+
+                // abrir y cerrar
+                if (!fila.classList.contains('d-none')) {
+                    fila.classList.add('d-none');
+                    return;
+                }
+
+                // Abrimos la fila 
+                fila.classList.remove('d-none');
+                contenedor.innerHTML = '<div class="text-center py-3"><div class="spinner-border spinner-border-sm text-primary"></div> Cargando...</div>';
 
                 fetch(`/admin/modulos/${moduloId}/contenido`)
                     .then(response => response.text())
                     .then(html => {
                         contenedor.innerHTML = html;
-                        contenedor.scrollIntoView({ behavior: 'smooth' });
                     })
                     .catch(error => {
-                        contenedor.innerHTML = '<div class="alert alert-danger">Error al cargar el contenido. Revisa la consola.</div>';
-                        console.error('Error:', error);
+                        contenedor.innerHTML = '<div class="alert alert-danger">Error al cargar.</div>';
+                        console.error(error);
                     });
             });
         });
     });
 </script>
 @endpush
-
+@stack('scripts')
 @endsection
