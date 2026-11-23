@@ -1,4 +1,4 @@
-@extends('layouts.admin') {{-- Usamos tu layout del panel --}}
+@extends('layouts.admin')
 
 @section('title', 'Mis Cursos')
 
@@ -15,10 +15,39 @@
         </button>
     </div>
 
+    {{-- SECCIÓN DE KPIs --}}
+    <div class="row g-4 mb-4">
+        <div class="col-md-4">
+            <x-atomics.kpi-card 
+                titulo="TOTAL CURSOS" 
+                :valor="$cursos->count()" 
+                colorFondo="#143D60" 
+                textoInferior="Cursos creados en la plataforma"
+            />
+        </div>
+        <div class="col-md-4">
+            <x-atomics.kpi-card 
+                titulo="PUBLICADOS" 
+                :valor="$cursos->where('estado', 'publicado')->count()" 
+                colorFondo="#27667B" 
+                textoInferior="Cursos visibles a los estudiantes"
+            />
+        </div>
+        <div class="col-md-4">
+            <x-atomics.kpi-card 
+                titulo="DESTACADOS" 
+                :valor="$cursos->where('es_destacado', true)->count()" 
+                colorFondo="#A0C878" 
+                textoInferior="Cursos en la sección principal"
+            />
+        </div>
+    </div>
+    
+
+    {{-- LISTA DE TARJETAS --}}
     <div class="row g-4">
         @forelse($cursos as $curso)
             <div class="col-lg-4 col-md-6">
-                {{-- componente tarjeta --}}
                 <x-course-card 
                     titulo="{{ $curso->titulo }}" 
                     descripcion="{{ $curso->descripcion_corta }}" 

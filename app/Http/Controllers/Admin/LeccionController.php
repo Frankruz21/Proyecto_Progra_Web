@@ -40,14 +40,15 @@ class LeccionController extends Controller
 
         Leccion::create($validated);
 
-        return redirect()->route('admin.lecciones.index')
+        $modulo = Modulo::find($validated['modulo_id']);
+        return redirect()->route('admin.modulos.index', ['curso_id' => $modulo->curso_id])
             ->with('success', 'Lección creada correctamente.');
     }
 
     public function edit(Leccion $leccion)
     {
         $modulos = Modulo::all();
-        return view('admin.lecciones.edit', compact('leccion', 'modulos'));
+        return redirect()->route('admin.lecciones.index', ['editar_leccion' => $leccion->id]);
     }
 
     public function update(Request $request, Leccion $leccion)
@@ -67,14 +68,20 @@ class LeccionController extends Controller
 
         $leccion->update($validated);
 
-        return redirect()->route('admin.lecciones.index')
+        $modulo = Modulo::find($validated['modulo_id']);
+        return redirect()->route('admin.modulos.index', ['curso_id' => $modulo->curso_id])
             ->with('success', 'Lección actualizada correctamente.');
     }
 
     public function destroy(Leccion $leccion)
     {
         $leccion->delete();
-        return redirect()->route('admin.lecciones.index')
-            ->with('success', 'Lección eliminada correctamente.');
+
+        // Si la petición viene de AJAX, devolvemos JSON. Si es normal, redirigimos.
+        if (request()->expectsJson()) {
+            return response()->json(['success' => true]);
+        }
+
+        return redirect()->back()->with('success', 'Lección eliminada.');
     }
 }

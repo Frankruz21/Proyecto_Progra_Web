@@ -1,24 +1,33 @@
-<div class="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 overflow-hidden flex flex-col h-full">
-    
-    <!-- Cabecera -->
-    <div class="h-40 flex items-center justify-center relative" style="background-color: {{ $colorFondo }};">
-        <h4 class="text-white text-xl font-bold">{{ $titulo }}</h4>
-        
-        <!-- Badge Categoría -->
-        <span class="absolute bottom-3 left-3 px-3 py-1 text-xs font-bold text-white rounded-full" style="background-color: #A0C878;">
+<div class="group relative flex flex-col h-72 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+     style="background-color: {{ $colorFondo }};">
+
+    {{-- Imagen opcional de fondo --}}
+    @if(!empty($imagen))
+        <img src="{{ $imagen }}" alt="{{ $titulo }}"
+             class="absolute inset-0 w-full h-full object-cover opacity-70 group-hover:opacity-90 group-hover:scale-105 transition-all duration-500">
+    @endif
+
+    {{-- Degradado para legibilidad --}}
+    <div class="absolute inset-0 bg-gradient-to-t from-[#143D60]/90 via-[#143D60]/30 to-transparent"></div>
+
+    {{-- Contenido --}}
+    <div class="relative flex flex-col h-full p-6 text-white">
+        <span class="text-xs font-semibold uppercase tracking-wider" style="color: #5FA8F5;">
             {{ $categoria }}
         </span>
-    </div>
 
-    <!-- Cuerpo -->
-    <div class="p-5 flex flex-col flex-grow">
-        <h5 class="text-lg font-bold mb-2" style="color: #143D60;">{{ $titulo }}</h5>
-        <p class="text-gray-500 text-sm mb-5 flex-grow">{{ $descripcion }}</p>
-        
-        <!-- Botón (Modificado para redirigir a módulos con el ID del curso) -->
-        <div class="mt-auto">
-            <a href="{{ route('admin.modulos.index', ['curso_id' => $cursoId]) }}" class="block w-full text-center py-2 font-bold rounded-lg transition-colors" style="background-color: #F1F5F9; color: #143D60;">
-                Gestionar Curso
+        <h4 class="mt-2 text-xl font-bold leading-snug line-clamp-2">{{ $titulo }}</h4>
+        <p class="mt-2 text-sm text-white/70 line-clamp-2">{{ $descripcion }}</p>
+
+        {{-- Botón play (estilo segunda imagen) --}}
+        <div class="mt-auto flex items-end justify-between">
+            <a href="{{ route('admin.modulos.index', ['curso_id' => $cursoId]) }}"
+               class="w-14 h-14 flex items-center justify-center rounded-full bg-white shadow-lg hover:scale-110 transition-transform"
+               style="color: #2563EB;"
+               aria-label="Ver curso">
+                <svg class="w-6 h-6 ml-0.5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
             </a>
         </div>
     </div>
