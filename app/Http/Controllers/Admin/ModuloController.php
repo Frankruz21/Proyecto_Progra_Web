@@ -41,7 +41,7 @@ class ModuloController extends Controller
 
         Modulo::create($validated);
 
-        return redirect()->route('admin.modulos.index')
+        return redirect()->route('admin.modulos.index', ['curso_id' => $validated['curso_id']])
             ->with('success', 'Módulo creado correctamente.');
     }
 
@@ -62,20 +62,22 @@ class ModuloController extends Controller
 
         $modulo->update($validated);
 
-        return redirect()->route('admin.modulos.index')
-            ->with('success', 'Módulo actualizado correctamente.');
+        return redirect()->route('admin.modulos.index', ['curso_id' => $validated['curso_id']])
+            ->with('success', 'Módulo creado correctamente.');
     }
 
     public function destroy(Modulo $modulo)
     {
+        $cursoId = $modulo->curso_id; //para el curos actual
+
         $modulo->delete();
-        return redirect()->route('admin.modulos.index')
-            ->with('success', 'Módulo eliminado correctamente.');
+        return redirect()->route('admin.modulos.index', ['curso_id' => $cursoId])
+            ->with('success', 'Módulo eliminado.');
     }
 
     public function contenido(Modulo $modulo)
     {
-        // Cargamos las lecciones y recursos de ESTE módulo
+        // Cargamos las lecciones y recursos del modulo selecciodo
         $lecciones = $modulo->lecciones()->orderBy('orden')->get();
         $recursos = \App\Models\Recurso::where('curso_id', $modulo->curso_id)->get(); 
 

@@ -24,7 +24,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('modulos/{modulo}/contenido', [ModuloController::class, 'contenido'])->name('modulos.contenido');
 
     // LECCIONES
-    Route::resource('lecciones', LeccionController::class)->except(['create']);
+    Route::resource('lecciones', LeccionController::class)
+        ->except(['create'])
+        ->parameters(['lecciones' => 'leccion']);
 });
 
 // Rutas de prueba o públicas
