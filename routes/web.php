@@ -6,9 +6,7 @@ use App\Http\Controllers\Admin\LeccionController;
 use App\Http\Controllers\Cursos\CursoController;
 use App\Http\Controllers\Aula\AulaController;
 
-Route::get('/', function () {
-    return view('welcome'); 
-});
+Route::view('/', 'public.home')->name('home');
 
 Route::prefix('admin')->name('admin.')->group(function () {
     
