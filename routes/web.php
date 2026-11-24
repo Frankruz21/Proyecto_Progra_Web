@@ -6,7 +6,7 @@ use App\Http\Controllers\Admin\LeccionController;
 use App\Http\Controllers\Cursos\CursoController;
 use App\Http\Controllers\Aula\AulaController;
 
-Route::view('/', 'public.home')->name('home');
+
 
 Route::prefix('admin')->name('admin.')->group(function () {
     
@@ -37,6 +37,12 @@ Route::get('/aula-prueba', function () {
     return view('student.aula.show');
 })->name('aula.prueba');
 
+// Dashboard de estudiante
+Route::get('/dashboard-estudiante', function () {
+    return view('student.dashboard');
+})->name('student.dashboard');
+
+// Vista de prueba de lección administrativa
 Route::get('/ver-leccion-admin', function () {
     return view('admin.lecciones.ver_estatica');
 });
