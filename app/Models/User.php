@@ -12,10 +12,10 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 #[Fillable([
-    'nombre1',
-    'nombre2',
-    'apellido1',
-    'apellido2',
+    'primer_nombre',
+    'segundo_nombre',
+    'primer_apellido',
+    'segundo_apellido',
     'email',
     'password',
     'telefono',

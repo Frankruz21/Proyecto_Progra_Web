@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('solicitud_instructores', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre1', 100);
-            $table->string('nombre2', 100)->nullable();
-            $table->string('apellido1', 100);
-            $table->string('apellido2', 100)->nullable();
+            $table->string('primer_nombre', 100);
+            $table->string('segundo_nombre', 100)->nullable();
+            $table->string('primer_apellido', 100);
+            $table->string('segundo_apellido', 100)->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('especialidad', 100);
@@ -26,6 +26,7 @@ return new class extends Migration
             $table->enum('estado',['pendiente', 'aprobada', 'rechazada'])->default('pendiente');
             $table->timestamp('fecha_revision')->nullable();
             $table->foreignId('revisado_por')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('user_id')->constrained('users');          
             $table->text('observaciones')->nullable();
             $table->timestamps();
         });
