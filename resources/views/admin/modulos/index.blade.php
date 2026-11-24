@@ -46,9 +46,20 @@
                 </h4>
                 <small class="text-muted">{{ $modulos->count() }} módulos</small>
             </div>
-            <button type="button" class="btn btn-success rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalCrearModulo">
-                <i class="bi bi-plus-lg me-1"></i> Nuevo Módulo
-            </button>
+            
+            <div class="d-flex gap-2">
+                <!-- BOTÓN DE VISTA PREVIA (Solo si hay un curso seleccionado) -->
+                @if($cursoSeleccionado)
+                    <a href="{{ route('admin.aula.show', $cursoSeleccionado->id) }}" class="btn btn-outline-primary rounded-pill px-4 shadow-sm">
+                        <i class="bi bi-play-circle me-1"></i> Vista Previa del Curso
+                    </a>
+                @endif
+
+                <!-- BOTÓN NUEVO MÓDULO -->
+                <button type="button" class="btn btn-success rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalCrearModulo">
+                    <i class="bi bi-plus-lg me-1"></i> Nuevo Módulo
+                </button>
+            </div>
         </div>
 
         <div class="card-body p-4">
@@ -87,7 +98,4 @@
         });
     </script>
 @endif
-@stack('scripts')
 @endsection
-
-

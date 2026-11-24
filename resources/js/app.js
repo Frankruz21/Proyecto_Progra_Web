@@ -12,3 +12,6 @@ import 'admin-lte/dist/css/adminlte.min.css';
 
 // JavaScript de AdminLTE 4
 import 'admin-lte';
+
+import * as bootstrap from 'bootstrap';
+window.bootstrap = bootstrap;

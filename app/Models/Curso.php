@@ -26,6 +26,7 @@ class Curso extends Model
         'nivel_id',
         'idioma_id',
     ]; 
+
     public function matriculas(): HasMany
     {
         return $this->hasMany(Matricula::class);
@@ -39,5 +40,15 @@ class Curso extends Model
     public function certificados(): HasMany
     {
         return $this->hasMany(Certificado::class);
+    }
+
+    public function modulos()
+    {
+        return $this->hasMany(Modulo::class);
+    }
+
+    public function lecciones()
+    {
+        return $this->hasMany(Leccion::class);
     }
 }
