@@ -14,11 +14,9 @@ class LeccionController extends Controller
     public function index(Request $request): AnonymousResourceCollection
     {
         $query = Leccion::query()->orderBy('orden');
-
         if ($request->filled('modulo_id')) {
             $query->where('modulo_id', $request->integer('modulo_id'));
         }
-
         return LeccionResource::collection($query->get());
     }
 
@@ -36,7 +34,6 @@ class LeccionController extends Controller
         ]);
 
         $leccion = Leccion::create($validated);
-
         return (new LeccionResource($leccion))
             ->response()
             ->setStatusCode(201);
@@ -61,14 +58,12 @@ class LeccionController extends Controller
         ]);
 
         $leccion->update($validated);
-
         return new LeccionResource($leccion->fresh());
     }
 
     public function destroy(Leccion $leccion): JsonResponse
     {
         $leccion->delete();
-
         return response()->json([
             'message' => 'Lección eliminada correctamente.',
         ]);

@@ -84,4 +84,10 @@ class ModuloController extends Controller
         // Retornamos SOLO el HTML, sin el layout (sin @extends)
         return view('admin.modulos.contenido', compact('modulo', 'lecciones', 'recursos'));
     }
+
+    public function toggle(Request $request, Modulo $modulo)
+    {
+        $modulo->update(['activo' => $request->boolean('activo')]);
+        return response()->json(['activo' => $modulo->activo]);
+    }
 }
