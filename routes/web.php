@@ -42,6 +42,11 @@ Route::get('/dashboard-estudiante', function () {
     return view('student.dashboard');
 })->name('student.dashboard');
 
+// Mis cursos del estudiante
+Route::get('/mis-cursos-estudiante', function () {
+    return view('student.cursos.index');
+})->name('student.cursos');
+
 // Vista de prueba de lección administrativa
 Route::get('/ver-leccion-admin', function () {
     return view('admin.lecciones.ver_estatica');

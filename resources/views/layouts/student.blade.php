@@ -452,7 +452,7 @@
                 <span>Inicio</span>
             </a>
 
-            <a href="#" class="student-nav-link @yield('active-cursos')">
+            <a href="{{ route('student.cursos') }}" class="student-nav-link @yield('active-cursos')">
                 <i class="bi bi-journal-bookmark"></i>
                 <span>Mis cursos</span>
             </a>

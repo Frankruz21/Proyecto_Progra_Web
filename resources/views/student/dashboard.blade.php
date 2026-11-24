@@ -241,8 +241,8 @@
                                 Curso completado
                             </span>
 
-                            <a href="#" class="continue-course-link">
-                                Ver curso
+                            <a href="{{ route('student.cursos') }}" class="continue-course-link">
+                                Ver mis cursos
                                 <i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
