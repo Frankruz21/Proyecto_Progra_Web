@@ -47,4 +47,9 @@ class Leccion extends Model
     {
         return $this->hasOne(EjercicioCodigo::class, 'leccion_id');
     }
+    
+    public function recursos()
+    {
+        return $this->hasMany(Recurso::class);
+    }
 }
