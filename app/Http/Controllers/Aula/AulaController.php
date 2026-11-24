@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Http\Controllers\Aula;
+
+use App\Http\Controllers\Controller;
+use App\Models\Curso;
+use App\Models\Leccion;
+use Illuminate\Http\Request;
+
+class AulaController extends Controller
+{
+    public function show($curso_id, $leccion_id = null)
+    {
+        // traemos el curso con toda su estructura
+        $curso = Curso::with(['modulos.lecciones'])->findOrFail($curso_id);
+
+        // si no se pasa una lección, tomamos la primera por defecto
+        if (!$leccion_id) {
+            $leccionActual = $curso->modulos->first()?->lecciones->first();
+        } else {
+            $leccionActual = Leccion::with('recursos')->findOrFail($leccion_id);
+        }
+        
+        if ($leccionActual && !$leccionActual->relationLoaded('recursos')) {
+            $leccionActual->load('recursos');
+        }
+
+        return view('admin.aula.show', compact('curso', 'leccionActual'));
+    }
+}

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ModuloController;
 use App\Http\Controllers\Admin\LeccionController;
 use App\Http\Controllers\Cursos\CursoController;
+use App\Http\Controllers\Aula\AulaController;
 
 Route::get('/', function () {
     return view('welcome'); 
@@ -24,7 +25,13 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('modulos/{modulo}/contenido', [ModuloController::class, 'contenido'])->name('modulos.contenido');
 
     // LECCIONES
-    Route::resource('lecciones', LeccionController::class)->except(['create']);
+    Route::resource('lecciones', LeccionController::class)
+        ->except(['create'])
+        ->parameters(['lecciones' => 'leccion']);
+
+    //zaula
+    Route::get('/aula/{curso_id}/{leccion_id?}', [AulaController::class, 'show'])
+        ->name('aula.show');
 });
 
 // Rutas de prueba o públicas
