@@ -1,10 +1,11 @@
 @extends('layouts.admin')
 
 @section('title', 'Gestión de Lecciones')
+@section('page-title', 'Lecciones')
 
 @section('content')
 <div class="card border-0 rounded-4 shadow-sm">
-    <div class="card-header bg-white border-0 pt-4 px-4 pb-0 d-flex justify-content-between align-items-center">
+    <<div class="card-header bg-white border-0 pt-4 px-4 pb-0 d-flex align-items-center w-100">>
         <div>
             <h4 class="fw-bold text-dark mb-0">
                 @if(isset($moduloFiltrado))
@@ -17,7 +18,7 @@
                 {{ $lecciones->count() }} lecciones {{ isset($moduloFiltrado) ? 'en este módulo' : 'en total' }}
             </small>
         </div>
-        <button type="button" class="btn btn-success rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalCrearLeccion">
+        <button type="button" class="btn btn-success rounded-pill px-4 shadow-sm ms-auto" data-bs-toggle="modal" data-bs-target="#modalCrearLeccion">
             <i class="bi bi-plus-lg me-1"></i> Nueva Lección
         </button>
     </div>

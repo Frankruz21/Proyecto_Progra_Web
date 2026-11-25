@@ -178,8 +178,9 @@
                         data-lte-toggle="treeview"
                         role="menu">
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                       <li class="nav-item">
+                            <a href="{{ route('admin.dashboard') }}"
+                            class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-speedometer2"></i>
                                 <p>Dashboard</p>
                             </a>
@@ -188,7 +189,8 @@
                         <li class="nav-header">GESTIÓN ACADÉMICA</li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.cursos.index') }}"
+                            class="nav-link {{ request()->routeIs('admin.cursos.*') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-book"></i>
                                 <p>Cursos</p>
                             </a>

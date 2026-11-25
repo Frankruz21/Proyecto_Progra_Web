@@ -6,9 +6,7 @@ use App\Http\Controllers\Admin\LeccionController;
 use App\Http\Controllers\Cursos\CursoController;
 use App\Http\Controllers\Aula\AulaController;
 
-Route::get('/', function () {
-    return view('welcome'); 
-});
+
 
 Route::prefix('admin')->name('admin.')->group(function () {
     
@@ -39,6 +37,25 @@ Route::get('/aula-prueba', function () {
     return view('student.aula.show');
 })->name('aula.prueba');
 
+// Dashboard de estudiante
+Route::get('/dashboard-estudiante', function () {
+    return view('student.dashboard');
+})->name('student.dashboard');
+
+// Mis cursos del estudiante
+Route::get('/mis-cursos-estudiante', function () {
+    return view('student.cursos.index');
+})->name('student.cursos');
+
+// Vista de prueba de lección administrativa
 Route::get('/ver-leccion-admin', function () {
     return view('admin.lecciones.ver_estatica');
 });
+// Inicio de sesión
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+// Registro de usuarios
+Route::get('/registro', function () {
+    return view('auth.register');
+})->name('register');
