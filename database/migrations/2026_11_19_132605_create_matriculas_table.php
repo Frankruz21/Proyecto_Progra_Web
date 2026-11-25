@@ -24,11 +24,13 @@ return new class extends Migration
                 ->constrained('cursos')
                 ->cascadeOnDelete();
 
+            $table->foreignId('orden_id')->constrained('ordenes')->restrcitOnDelete();
+
             // Fecha en que se realizó la matrícula
             $table->dateTime('fecha_matricula')->useCurrent();
 
             // Estado de la matrícula
-            $table->string('estado', 20)->default('activa');
+            $table->enum('estado', ['activo','finalizado','cancelado'])->default('activo');
 
             // Fecha en que el estudiante finalizó el curso
             $table->dateTime('fecha_finalizacion')->nullable();

@@ -36,6 +36,26 @@ use Database\Seeders\Cursos\RecursoSeeder;
 use Database\Seeders\Catalogo\NivelSeeder;
 use Database\Seeders\Catalogo\IdiomaSeeder;
 
+//CarritoPagos
+use Database\Seeders\CarritoPagos\CarritoSeeder;
+use Database\Seeders\CarritoPagos\CuponSeeder;
+use Database\Seeders\CarritoPagos\DetalleOrdenSeeder;
+use Database\Seeders\CarritoPagos\ItemsCarritoSeeder;
+use Database\Seeders\CarritoPagos\OrdenSeeder;
+use Database\Seeders\CarritoPagos\PagoSeeder;
+
+//Facturacion
+use Database\Seeders\Facturacion\EmpresaSeeder;
+use Database\Seeders\Facturacion\CaiRangoSeeder;
+use Database\Seeders\Facturacion\FacturaSeeder;
+use Database\Seeders\Facturacion\DetalleFacturaSeeder;
+use Database\Seeders\Facturacion\BitacoraAuditoriaSeeder;
+
+//Matricula
+use Database\Seeders\Matricula\MatriculaSeeder;
+use Database\Seeders\Matricula\ProgresoSeeder;
+use Database\Seeders\Matricula\CertificadoSeeder;
+
 class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
@@ -46,7 +66,7 @@ class DatabaseSeeder extends Seeder
             //usuarios
             RoleSeeder::class,
             UserSeeder::class,
-            //SolicitudInstructorSeeder::class,
+            SolicitudInstructorSeeder::class,
 
             //cursos
             CategoriaSeeder::class,
@@ -76,6 +96,26 @@ class DatabaseSeeder extends Seeder
             CasoPruebaSeeder::class,
             EnvioCodigoSeeder::class,
             RecursoSeeder::class,
+
+            //CarritoPagos
+            CuponSeeder::class,
+            CarritoSeeder::class,
+            ItemsCarritoSeeder::class,
+            OrdenSeeder::class,
+            DetalleOrdenSeeder::class,
+            PagoSeeder::class,
+
+            //Facturacion
+            EmpresaSeeder::class,
+            CaiRangoSeeder::class,
+            FacturaSeeder::class,
+            DetalleFacturaSeeder::class,
+            BitacoraAuditoriaSeeder::class,
+
+            //Matricula
+            MatriculaSeeder::class,
+            ProgresoSeeder::class,
+            CertificadoSeeder::class,
 
         ]);
     }

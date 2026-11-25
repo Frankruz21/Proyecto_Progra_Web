@@ -14,12 +14,14 @@ return new class extends Migration
             // Estudiante que obtiene el certificado
             $table->foreignId('user_id')
                 ->constrained('users')
-                ->cascadeOnDelete();
+                ->restrictOnDelete();
 
             // Curso que completó el estudiante
             $table->foreignId('curso_id')
                 ->constrained('cursos')
-                ->cascadeOnDelete();
+                ->retrictOnDelete();
+
+            $table->foreignId('matricula_id')->constrained('matriculas')->restrictOnDelete();
 
             // Código único para verificar el certificado
             $table->string('codigo', 100)->unique();

@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('ordenes', function (Blueprint $table) {
             $table->id();
             $table->string('numero', 30)->unique();
-            $table->foreignId('user_id')->constrained('users')->restrictOnDelete();
+            $table->foreignId('carrito_id')->constrained('carritos')->restrictOnDelete();
             $table->foreignId('cupon_id')->nullable()->constrained('cupones')->nullOnDelete();
             $table->decimal('subtotal', 12, 2);
             $table->decimal('descuento', 12, 2)->default(0);
