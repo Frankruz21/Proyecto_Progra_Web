@@ -457,7 +457,7 @@
                 <span>Mis cursos</span>
             </a>
 
-            <a href="#" class="student-nav-link @yield('active-recursos')">
+            <a href="{{ route('student.recursos') }}" class="student-nav-link @yield('active-recursos')">
                 <i class="bi bi-folder2-open"></i>
                 <span>Recursos</span>
             </a>

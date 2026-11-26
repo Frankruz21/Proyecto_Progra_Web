@@ -47,6 +47,11 @@ Route::get('/mis-cursos-estudiante', function () {
     return view('student.cursos.index');
 })->name('student.cursos');
 
+// Recursos del estudiante
+Route::get('/recursos-estudiante', function () {
+    return view('student.recursos.index');
+})->name('student.recursos');
+
 // Vista de prueba de lección administrativa
 Route::get('/ver-leccion-admin', function () {
     return view('admin.lecciones.ver_estatica');
