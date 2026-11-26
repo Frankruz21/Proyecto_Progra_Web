@@ -178,8 +178,8 @@
                             Completa tus datos para formar parte de UniLearning.
                         </p>
                     </div>
-  
-                    <form>
+
+                    <form action="{{ route('register.post') }}" method="POST" novalidate>
 
                         @csrf
 
@@ -188,77 +188,167 @@
                                 <label for="primer_nombre" class="form-label">
                                     Primer nombre
                                 </label>
-                                <input type="text" class="form-control"
-                                    id="primer_nombre" name="primer_nombre"
-                                    placeholder="Primer nombre" required>
-                            </div>
 
+                                <input
+                                    type="text"
+                                    class="form-control @error('primer_nombre') is-invalid @enderror"
+                                    id="primer_nombre"
+                                    name="primer_nombre"
+                                    value="{{ old('primer_nombre') }}"
+                                    placeholder="Primer nombre"
+                                    autocomplete="given-name"
+                                    required
+                                >
+
+                                @error('primer_nombre')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                             <div class="col-md-6 mb-3">
                                 <label for="segundo_nombre" class="form-label">
-                                    Segundo nombre
+                                    Segundo nombre <small class="text-secondary fw-normal">(opcional)</small>
                                 </label>
-                                <input type="text" class="form-control"
-                                    id="segundo_nombre" name="segundo_nombre"
-                                    placeholder="Segundo nombre">
-                            </div>
 
+                                <input
+                                    type="text"
+                                    class="form-control @error('segundo_nombre') is-invalid @enderror"
+                                    id="segundo_nombre"
+                                    name="segundo_nombre"
+                                    value="{{ old('segundo_nombre') }}"
+                                    placeholder="Segundo nombre"
+                                    autocomplete="additional-name"
+                                    
+                                >
+
+                                @error('segundo_nombre')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="primer_apellido" class="form-label">
                                     Primer apellido
                                 </label>
-                                <input type="text" class="form-control"
-                                    id="primer_apellido" name="primer_apellido"
-                                    placeholder="Primer apellido" required>
-                            </div>
 
+                                <input
+                                    type="text"
+                                    class="form-control @error('primer_apellido') is-invalid @enderror"
+                                    id="primer_apellido"
+                                    name="primer_apellido"
+                                    value="{{ old('primer_apellido') }}"
+                                    placeholder="Primer apellido"
+                                    autocomplete="family-name"
+                                    required
+                                >
+
+                                @error('primer_apellido')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
                             <div class="col-md-6 mb-3">
                                 <label for="segundo_apellido" class="form-label">
-                                    Segundo apellido
+                                    Segundo apellido <small class="text-secondary fw-normal">(opcional)</small>
                                 </label>
-                                <input type="text" class="form-control"
-                                    id="segundo_apellido" name="segundo_apellido"
-                                    placeholder="Segundo apellido">
+
+                                <input
+                                    type="text"
+                                    class="form-control @error('segundo_apellido') is-invalid @enderror"
+                                    id="segundo_apellido"
+                                    name="segundo_apellido"
+                                    value="{{ old('segundo_apellido') }}"
+                                    placeholder="Segundo apellido"
+                                    autocomplete="off"
+                                    
+                                >
+
+                                @error('segundo_apellido')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label">
-                                Correo electrónico
-                            </label>
-                            <input type="email" class="form-control"
-                                id="email" name="email"
-                                placeholder="nombre@correo.com" required>
+                                    Correo electrónico
+                                </label>
+
+                                <input
+                                    type="email"
+                                    class="form-control @error('email') is-invalid @enderror"
+                                    id="email"
+                                    name="email"
+                                    value="{{ old('email') }}"
+                                    placeholder="nombre@correo.com"
+                                    autocomplete="email"
+                                    required
+                                >
+
+                                @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                         </div>
 
                         <div class="mb-3">
                             <label for="telefono" class="form-label">
-                                Teléfono
-                            </label>
-                            <input type="tel" class="form-control"
-                                id="telefono" name="telefono"
-                                placeholder="Ingresa tu teléfono">
+                                    Teléfono <small class="text-secondary fw-normal">(opcional)</small>
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    class="form-control @error('telefono') is-invalid @enderror"
+                                    id="telefono"
+                                    name="telefono"
+                                    value="{{ old('telefono') }}"
+                                    placeholder="Solo números, sin guiones"
+                                    autocomplete="tel"
+                                    
+                                >
+
+                                @error('telefono')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label for="password" class="form-label">
-                                Contraseña
-                            </label>
-                            <input type="password" class="form-control"
-                                id="password" name="password"
-                                placeholder="Crea una contraseña" required>
+                        <div class="row">
+                            <div class="col-md-6 mb-4">
+                                <label for="password" class="form-label">
+                                    Contraseña
+                                </label>
+
+                                <input
+                                    type="password"
+                                    class="form-control @error('password') is-invalid @enderror"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Mínimo 8 caracteres"
+                                    autocomplete="new-password"
+                                    required
+                                >
+
+                                @error('password')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="col-md-6 mb-4">
+                                <label for="password_confirmation" class="form-label">
+                                    Confirmar contraseña
+                                </label>
+
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    id="password_confirmation"
+                                    name="password_confirmation"
+                                    placeholder="Repite tu contraseña"
+                                    autocomplete="new-password"
+                                    required
+                                >
+                            </div>
                         </div>
 
-                        <div class="mb-4">
-                            <label for="password_confirmation" class="form-label">
-                                Confirmar contraseña
-                            </label>
-                            <input type="password" class="form-control"
-                                id="password_confirmation"
-                                name="password_confirmation"
-                                placeholder="Repite tu contraseña" required>
-                        </div>
-
-                        <button type="button" class="register-button">
+                        <button type="submit" class="register-button">
                             Crear cuenta
                             <i class="bi bi-arrow-right ms-2"></i>
                         </button>
@@ -267,7 +357,8 @@
                             <span class="text-secondary">
                                 ¿Ya tienes una cuenta?
                             </span>
-                            <a href="/login" class="register-link">
+
+                            <a href="{{ route('login') }}" class="register-link">
                                 Iniciar sesión
                             </a>
                         </div>

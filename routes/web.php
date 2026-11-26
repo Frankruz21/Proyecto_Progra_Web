@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ModuloController;
 use App\Http\Controllers\Admin\LeccionController;
 use App\Http\Controllers\Cursos\CursoController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Aula\AulaController;
 
 
@@ -61,16 +63,14 @@ Route::get('/certificados-estudiante', function () {
 Route::get('/ver-leccion-admin', function () {
     return view('admin.lecciones.ver_estatica');
 });
-// Página de inicio
-Route::get('/', function () {
-    return view('public.home');
-})->name('home');
 
-// Inicio de sesión
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
-// Registro de usuarios
-Route::get('/registro', function () {
-    return view('auth.register');
-})->name('register');
+// Login
+Route::get('/login', [LoginController::class, 'showLogin'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:5,1')->name('login.post');
+
+// Registro
+Route::get('/registro', [RegisterController::class, 'showRegister'])->name('register');
+Route::post('/registro', [RegisterController::class, 'register'])->name('register.post');
+
+// Logout
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');

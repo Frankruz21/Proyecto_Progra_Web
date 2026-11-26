@@ -499,10 +499,14 @@
                 </a>
             </div>
 
-            <a href="#" class="student-nav-link">
+            <a href="#" class="student-nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                 <i class="bi bi-box-arrow-left"></i>
                 <span>Cerrar sesión</span>
             </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
 
         </div>
 

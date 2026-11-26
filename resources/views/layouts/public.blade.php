@@ -18,6 +18,7 @@
           rel="stylesheet">
 
     {{-- Recursos exclusivos del portal público --}}
+    {{-- <link rel="stylesheet" href="{{ asset('../resources/css/public.css') }}"> --}}
     @vite(['resources/css/public.css', 'resources/js/public.js'])
 </head>
 
@@ -158,6 +159,7 @@
         </div>
     </footer>
 
+    {{-- <script src="{{ asset('../resources/js/public.js') }}"></script> --}}
 </body>
 
 </html>

@@ -184,7 +184,7 @@
                         </p>
                     </div>
 
-                    <form>
+                    <form action="{{ route('login.post') }}" method="POST" novalidate>
 
                         @csrf
 
@@ -263,7 +263,7 @@
                         </div>
 
                         {{-- Botón --}}
-                        <button type="button" class="login-button">
+                        <button type="submit" class="login-button">
                             Iniciar sesión
                             <i class="bi bi-arrow-right ms-2"></i>
                         </button>
