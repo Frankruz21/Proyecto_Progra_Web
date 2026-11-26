@@ -64,6 +64,11 @@ Route::get('/facturas-estudiante', function () {
     return view('student.facturas.index');
 })->name('student.facturas');
 
+// Perfil del estudiante
+Route::get('/perfil-estudiante', function () {
+    return view('student.perfil.index');
+})->name('student.perfil');
+
 // Vista de prueba de lección administrativa
 Route::get('/ver-leccion-admin', function () {
     return view('admin.lecciones.ver_estatica');

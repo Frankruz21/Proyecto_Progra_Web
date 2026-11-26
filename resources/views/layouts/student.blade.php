@@ -474,9 +474,9 @@
                 <span>Facturas</span>
             </a>
 
-            <a href="#" class="student-nav-link @yield('active-perfil')">
-                <i class="bi bi-person-circle"></i>
-                <span>Mi perfil</span>
+            <a href="{{ route('student.perfil') }}" class="student-nav-link @yield('active-perfil')">
+                <i class="bi bi-person"></i>
+                <span>Perfil</span>
             </a>
 
         </div>
