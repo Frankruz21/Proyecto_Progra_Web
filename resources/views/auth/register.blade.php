@@ -178,74 +178,84 @@
                             Completa tus datos para formar parte de UniLearning.
                         </p>
                     </div>
-
+  
                     <form>
 
                         @csrf
 
-                        <div class="mb-3">
-                            <label for="name" class="form-label">
-                                Nombre completo
-                            </label>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="primer_nombre" class="form-label">
+                                    Primer nombre
+                                </label>
+                                <input type="text" class="form-control"
+                                    id="primer_nombre" name="primer_nombre"
+                                    placeholder="Primer nombre" required>
+                            </div>
 
-                            <input
-                                type="text"
-                                class="form-control"
-                                id="name"
-                                name="name"
-                                placeholder="Ingresa tu nombre completo"
-                                autocomplete="name"
-                                required
-                            >
+                            <div class="col-md-6 mb-3">
+                                <label for="segundo_nombre" class="form-label">
+                                    Segundo nombre
+                                </label>
+                                <input type="text" class="form-control"
+                                    id="segundo_nombre" name="segundo_nombre"
+                                    placeholder="Segundo nombre">
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="primer_apellido" class="form-label">
+                                    Primer apellido
+                                </label>
+                                <input type="text" class="form-control"
+                                    id="primer_apellido" name="primer_apellido"
+                                    placeholder="Primer apellido" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="segundo_apellido" class="form-label">
+                                    Segundo apellido
+                                </label>
+                                <input type="text" class="form-control"
+                                    id="segundo_apellido" name="segundo_apellido"
+                                    placeholder="Segundo apellido">
+                            </div>
                         </div>
 
                         <div class="mb-3">
                             <label for="email" class="form-label">
                                 Correo electrónico
                             </label>
+                            <input type="email" class="form-control"
+                                id="email" name="email"
+                                placeholder="nombre@correo.com" required>
+                        </div>
 
-                            <input
-                                type="email"
-                                class="form-control"
-                                id="email"
-                                name="email"
-                                placeholder="nombre@correo.com"
-                                autocomplete="email"
-                                required
-                            >
+                        <div class="mb-3">
+                            <label for="telefono" class="form-label">
+                                Teléfono
+                            </label>
+                            <input type="tel" class="form-control"
+                                id="telefono" name="telefono"
+                                placeholder="Ingresa tu teléfono">
                         </div>
 
                         <div class="mb-3">
                             <label for="password" class="form-label">
                                 Contraseña
                             </label>
-
-                            <input
-                                type="password"
-                                class="form-control"
-                                id="password"
-                                name="password"
-                                placeholder="Crea una contraseña"
-                                autocomplete="new-password"
-                                required
-                            >
+                            <input type="password" class="form-control"
+                                id="password" name="password"
+                                placeholder="Crea una contraseña" required>
                         </div>
 
                         <div class="mb-4">
-                            <label for="password_confirmation"
-                                   class="form-label">
+                            <label for="password_confirmation" class="form-label">
                                 Confirmar contraseña
                             </label>
-
-                            <input
-                                type="password"
-                                class="form-control"
+                            <input type="password" class="form-control"
                                 id="password_confirmation"
                                 name="password_confirmation"
-                                placeholder="Repite tu contraseña"
-                                autocomplete="new-password"
-                                required
-                            >
+                                placeholder="Repite tu contraseña" required>
                         </div>
 
                         <button type="button" class="register-button">
@@ -257,13 +267,13 @@
                             <span class="text-secondary">
                                 ¿Ya tienes una cuenta?
                             </span>
-
                             <a href="/login" class="register-link">
                                 Iniciar sesión
                             </a>
                         </div>
 
                     </form>
+
 
                 </div>
             </div>

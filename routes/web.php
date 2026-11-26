@@ -51,6 +51,11 @@ Route::get('/mis-cursos-estudiante', function () {
 Route::get('/ver-leccion-admin', function () {
     return view('admin.lecciones.ver_estatica');
 });
+// Página de inicio
+Route::get('/', function () {
+    return view('public.home');
+})->name('home');
+
 // Inicio de sesión
 Route::get('/login', function () {
     return view('auth.login');
