@@ -457,14 +457,14 @@
                 <span>Mis cursos</span>
             </a>
 
-            <a href="#" class="student-nav-link @yield('active-recursos')">
+            <a href="{{ route('student.recursos') }}" class="student-nav-link @yield('active-recursos')">
                 <i class="bi bi-folder2-open"></i>
                 <span>Recursos</span>
             </a>
 
             <div class="sidebar-section-title mt-4">Mi cuenta</div>
 
-            <a href="#" class="student-nav-link @yield('active-certificados')">
+            <a href="{{ route('student.certificados') }}" class="student-nav-link @yield('active-certificados')">
                 <i class="bi bi-award"></i>
                 <span>Certificados</span>
             </a>
