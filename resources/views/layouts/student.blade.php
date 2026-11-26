@@ -447,8 +447,8 @@
 
             <div class="sidebar-section-title">Mi aprendizaje</div>
 
-            <a href="#" class="student-nav-link @yield('active-dashboard')">
-                <i class="bi bi-house-door"></i>
+            <a href="{{ route('student.dashboard') }}" class="student-nav-link @yield('active-dashboard')">
+                <i class="bi bi-house"></i>
                 <span>Inicio</span>
             </a>
 
