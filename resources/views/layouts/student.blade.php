@@ -469,7 +469,7 @@
                 <span>Certificados</span>
             </a>
 
-            <a href="#" class="student-nav-link @yield('active-facturas')">
+            <a href="{{ route('student.facturas') }}" class="student-nav-link @yield('active-facturas')">
                 <i class="bi bi-receipt"></i>
                 <span>Facturas</span>
             </a>
