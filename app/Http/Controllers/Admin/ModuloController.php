@@ -17,8 +17,8 @@ class ModuloController extends Controller
         if ($request->filled('curso_id')) {
             $query->where('curso_id', $request->curso_id);
         }
-        $modulos = $query->get();
-        $cursos = Curso::all(); 
+        $modulos = $query->paginate(15);
+        $cursos = Curso::paginate(15); 
         $cursoSeleccionado = $request->filled('curso_id') ? Curso::find($request->curso_id) : null;
 
         return view('admin.modulos.index', compact('modulos', 'cursos', 'cursoSeleccionado'));
@@ -26,7 +26,7 @@ class ModuloController extends Controller
 
     public function create()
     {
-        $cursos = Curso::all(); 
+        $cursos = Curso::paginate(15); 
         return view('admin.modulos.create', compact('cursos'));
     }
 
@@ -47,7 +47,7 @@ class ModuloController extends Controller
 
     public function edit(Modulo $modulo)
     {
-        $cursos = Curso::all();
+        $cursos = Curso::paginate(15);
         return view('admin.modulos.edit', compact('modulo', 'cursos'));
     }
 

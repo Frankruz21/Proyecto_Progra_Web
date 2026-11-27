@@ -18,7 +18,7 @@
         <div class="col-md-4">
             <x-atomics.kpi-card
                 titulo="LECCIONES"
-                :valor="$modulos->sum(fn($m) => $m->lecciones->count())"
+                :valor="$modulos->sum('lecciones_count')"
                 colorFondo="#27667B"
                 textoInferior="Lecciones totales"
             />

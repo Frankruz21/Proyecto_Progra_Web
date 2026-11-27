@@ -13,8 +13,9 @@ class CursoController extends Controller
 {
     public function index()
     {
-        //$cursos = Curso::where('instructor_id', Auth::id())->get(); //filtrar por instructor
-        $cursos = Curso::all();
+        // $cursos = Curso::where('instructor_id', Auth::id())->orderByDesc('created_at')->paginate(15);
+        $cursos = Curso::orderByDesc('created_at')->paginate(15);
+
         return view('admin.cursos.index', compact('cursos'));
     }
 
