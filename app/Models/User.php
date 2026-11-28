@@ -94,4 +94,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Certificado::class);
     }
+
+    public function perfilInstructor()
+    {
+        return $this->hasOne(Perfil_Instructor::class, 'user_id');
+    }
 }

@@ -56,9 +56,11 @@
                 @endif
 
                 <!-- BOTÓN NUEVO MÓDULO -->
-                <button type="button" class="btn btn-success rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalCrearModulo">
-                    <i class="bi bi-plus-lg me-1"></i> Nuevo Módulo
-                </button>
+                <x-atomics.expand-button
+                    texto="Nuevo Módulo"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalCrearModulo"
+                />
             </div>
         </div>
 

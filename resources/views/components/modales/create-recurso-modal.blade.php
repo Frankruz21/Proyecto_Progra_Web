@@ -1,3 +1,10 @@
+@php
+    $usuarioActual = auth()->user();
+    $instructorActual = $usuarioActual?->instructor;
+    $nombreInstructor = $usuarioActual?->name ?? $instructorActual?->nombre ?? 'Instructor no identificado';
+    $instructorId = $instructorActual?->id ?? $usuarioActual?->id;
+@endphp
+
 <div class="modal fade" id="modalCrearRecurso" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 shadow-lg" style="background:#f8faff; color:#1e293b; border-radius:20px;">
@@ -14,6 +21,18 @@
 
                 <div class="modal-body p-4">
                     <div class="row g-3">
+
+                        <!-- Instructor logueado (solo visual) -->
+                        <div class="col-md-12">
+                            <label class="form-label fw-semibold small text-secondary">Instructor</label>
+                            <input type="text"
+                                   value="{{ $nombreInstructor }}"
+                                   class="form-control border-0 shadow-sm"
+                                   style="background:#eef2f7; color:#475569; border-radius:12px;"
+                                   disabled>
+                            {{-- Opcional: si envías el formulario por AJAX/FormData y necesitas el ID explícito --}}
+                            <input type="hidden" name="instructor_id" id="recurso_instructor_id" value="{{ $instructorId }}">
+                        </div>
 
                         <!-- Lección asignada -->
                         <div class="col-md-12">

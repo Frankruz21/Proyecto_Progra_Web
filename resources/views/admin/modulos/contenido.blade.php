@@ -9,11 +9,12 @@
                 <a href="{{ route('admin.lecciones.index', ['modulo_id' => $modulo->id]) }}" class="btn btn-sm btn-outline-primary rounded-pill px-3">
                     <i class="bi bi-list-ul me-1"></i> Gestionar Lecciones
                 </a>
-                <button type="button" class="btn btn-sm btn-success rounded-pill px-3 btn-abrir-leccion"
-                        data-modulo-id="{{ $modulo->id }}"
-                        data-modulo-titulo="{{ ($modulo->curso->titulo ?? 'Curso') . ' - ' . $modulo->titulo }}">
-                    <i class="bi bi-plus-circle me-1"></i> Nueva Lección
-                </button>
+                <x-atomics.expand-button
+                    texto="Nueva Lección"
+                    class="btn-sm btn-abrir-leccion"
+                    data-modulo-id="{{ $modulo->id }}"
+                    data-modulo-titulo="{{ ($modulo->curso->titulo ?? 'Curso') . ' - ' . $modulo->titulo }}"
+                />
             </div>
         </div>
 

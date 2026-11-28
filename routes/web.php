@@ -9,7 +9,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Aula\AulaController;
 
 
-
 Route::prefix('admin')->name('admin.')->group(function () {
     
     Route::get('/dashboard', function () {
@@ -74,3 +73,5 @@ Route::post('/registro', [RegisterController::class, 'register'])->name('registe
 
 // Logout
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+
+Route::redirect('/', '/login');

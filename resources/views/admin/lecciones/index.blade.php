@@ -18,9 +18,11 @@
                 {{ $lecciones->count() }} lecciones {{ isset($moduloFiltrado) ? 'en este módulo' : 'en total' }}
             </small>
         </div>
-        <button type="button" class="btn btn-success rounded-pill px-4 shadow-sm ms-auto" data-bs-toggle="modal" data-bs-target="#modalCrearLeccion">
-            <i class="bi bi-plus-lg me-1"></i> Nueva Lección
-        </button>
+        <x-atomics.expand-button
+        texto="Nueva Lección"
+        data-bs-toggle="modal"
+        data-bs-target="#modalCrearLeccion"
+    />
     </div>
 
     <div class="card-body p-4">
