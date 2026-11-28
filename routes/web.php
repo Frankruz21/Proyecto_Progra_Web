@@ -9,7 +9,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\Aula\AulaController;
 
 
-
 Route::prefix('admin')->name('admin.')->group(function () {
     
     Route::get('/dashboard', function () {
@@ -23,6 +22,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     //MODULOS
     Route::resource('modulos', ModuloController::class)->except(['create']);
     Route::get('modulos/{modulo}/contenido', [ModuloController::class, 'contenido'])->name('modulos.contenido');
+
+    Route::patch('modulos/{modulo}/toggle', [ModuloController::class, 'toggle'])->name('modulos.toggle');
 
     // LECCIONES
     Route::resource('lecciones', LeccionController::class)
@@ -84,3 +85,5 @@ Route::post('/registro', [RegisterController::class, 'register'])->name('registe
 
 // Logout
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+
+Route::redirect('/', '/login');

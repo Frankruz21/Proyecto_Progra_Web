@@ -14,10 +14,11 @@ class RecursoController extends Controller
 {
     public function index()
     {
-        $recursos = Recurso::with(['curso', 'leccion'])->orderBy('created_at', 'desc')->get();
-        
-        $cursos = Curso::all();
-        $lecciones = Leccion::with('modulo.curso')->get(); 
+        $recursos = Recurso::with(['curso', 'leccion'])->orderBy('created_at', 'desc')
+            ->paginate(15);
+
+        $cursos = Curso::paginate(15);
+        $lecciones = Leccion::with('modulo.curso')->paginate(15);
 
         return view('admin.recursos.index', compact('recursos', 'cursos', 'lecciones'));
     }

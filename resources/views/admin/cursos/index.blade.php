@@ -4,16 +4,19 @@
 @section('page-title', 'Cursos')
 
 @section('content')
+
 <div class="container-fluid py-4">
     
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h2 class="fw-bold text-dark mb-1">Mis Cursos</h2>
-            <p class="text-muted mb-0">Gestiona los cursos que estás impartiendo.</p>
+            <p class="text-muted mb-0">Gestiona los cursos que estás impartiendo</p>
         </div>
-        <button type="button" class="btn btn-success rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalCrearCurso">
-            <i class="bi bi-plus-circle me-2"></i> Nuevo Curso
-        </button>
+        <x-atomics.expand-button
+            texto="Nuevo Curso"
+            data-bs-toggle="modal"
+            data-bs-target="#modalCrearCurso"
+        />
     </div>
 
     {{-- SECCIÓN DE KPIs --}}
@@ -50,11 +53,15 @@
         @forelse($cursos as $curso)
             <div class="col-lg-4 col-md-6">
                 <x-course-card 
-                    titulo="{{ $curso->titulo }}" 
-                    descripcion="{{ $curso->descripcion_corta }}" 
-                    categoria="{{ $curso->categoria->nombre ?? 'General' }}" 
-                    colorFondo="#143D60" 
+                    titulo="{{ $curso->titulo }}"
+                    descripcion="{{ $curso->descripcion_corta }}"
+                    categoria="{{ $curso->categoria->nombre ?? 'General' }}"
+                    colorFondo="#143D60"
                     :cursoId="$curso->id"
+                    :duracionHoras="$curso->duracion_horas"
+                    :mostrarCategoria="false"
+                    :mostrarEstado="false"
+                    :mostrarProgreso="false"
                 />
             </div>
         @empty
@@ -68,7 +75,7 @@
 
 </div>
 
-{{-- Usamos el componente del modal --}}
+{{-- modal --}}
 <x-modales.create-curso-modal />
 
 @endsection

@@ -51,4 +51,9 @@ class Curso extends Model
     {
         return $this->hasMany(Leccion::class);
     }
+
+        public function instructor()
+    {
+        return $this->belongsTo(Perfil_Instructor::class, 'instructor_id');
+    }
 }

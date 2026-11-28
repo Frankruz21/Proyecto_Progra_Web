@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}"> 
+    <script src="{{ asset('js/lecciones.js') }}"></script>
 
     <script src="https://cdn.tailwindcss.com"></script>
     <script>tailwind.config = {prefix: 'tw-',}</script>
