@@ -37,11 +37,12 @@
     <div class="card border-0 rounded-4 shadow-sm">
         <div class="card-header bg-white border-0 pt-4 px-4 pb-0 d-flex justify-content-between align-items-center">
             <div>
-                <h4 class="fw-bold text-dark mb-0">
+                <h4 class="font-bold text-slate-900 mb-0 text-xl sm:text-2xl tracking-tight">
                     @if($cursoSeleccionado)
-                        Módulos: <span class="text-success">{{ $cursoSeleccionado->titulo }}</span>
+                        <span class="text-[#0f3d5e]">Módulos:</span>
+                        <span class="text-[#3b8d82]">{{ $cursoSeleccionado->titulo }}</span>
                     @else
-                        Lista de Módulos
+                        <span class="text-[#0f3d5e]">Lista de Módulos</span>
                     @endif
                 </h4>
                 <small class="text-muted">{{ $modulos->count() }} módulos</small>
@@ -49,23 +50,19 @@
 
             <div class="d-flex gap-2">
                 @if($cursoSeleccionado)
-                    <a href="{{ route('admin.aula.show', $cursoSeleccionado->id) }}" class="btn btn-outline-primary rounded-pill px-4 shadow-sm">
-                        <i class="bi bi-play-circle-fill me-1"></i> Vista Previa del Curso
+                    <a href="{{ route('admin.aula.show', $cursoSeleccionado->id) }}"
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-gradient-to-r from-[#0f3d5e] via-[#1b648c] to-[#3b8d82] hover:from-[#154c79] hover:via-[#1e739e] hover:to-[#4fa376] shadow-sm hover:shadow-md hover:-translate-y-0.5 transition duration-200">
+                        <i class="bi bi-play-circle-fill text-base"></i>
+                        <span>Vista Previa del Curso</span>
                     </a>
                 @endif
 
-<<<<<<< HEAD
-                <button type="button" class="btn btn-success rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalCrearModulo">
-                    <i class="bi bi-plus-lg me-1"></i> Nuevo Módulo
-                </button>
-=======
                 <!-- BOTÓN NUEVO MÓDULO -->
                 <x-atomics.expand-button
                     texto="Nuevo Módulo"
                     data-bs-toggle="modal"
                     data-bs-target="#modalCrearModulo"
                 />
->>>>>>> anderzon-2
             </div>
         </div>
 
