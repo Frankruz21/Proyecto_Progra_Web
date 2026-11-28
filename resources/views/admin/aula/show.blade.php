@@ -7,11 +7,6 @@
     
     <!-- Barra Superior -->
     <div class="flex justify-between items-center mb-8">
-        <div class="flex gap-4">
-            <div class="bg-white/10 px-4 py-2 rounded-full flex items-center gap-2 text-sm text-gray-300 w-64">
-                <i class="bi bi-search"></i> Search courses
-            </div>
-        </div>
         <div class="flex gap-6 text-sm font-medium text-gray-400">
             <a href="#" class="text-white border-b-2 border-white pb-1">Course</a>
             <a href="#" class="hover:text-white transition">Education</a>
@@ -36,13 +31,12 @@
             <!-- New Course (Módulos con Scroll) -->
             <div class="bg-white/5 rounded-3xl p-5 border border-white/10 flex flex-col max-h-[350px]">
                 <div class="flex justify-between items-center mb-4 flex-shrink-0">
-                    <h2 class="text-white font-bold text-2xl leading-tight">New<br>Course</h2>
-                    <span class="text-[10px] text-gray-400 text-right leading-tight">Sort by<br>Today</span>
+                    <h2 class="text-white font-bold text-2xl leading-tight">Modulos</h2>
                 </div>
                 
                 <!-- Contenedor con scroll -->
                 <div class="space-y-4 overflow-y-auto pr-2 custom-scrollbar">
-                    @foreach($curso->modulos as $modulo)
+                    @foreach($curso->modulos->filter(fn ($m) => (bool) $m->activo) as $modulo)
                         <div class="relative group">
                             <!-- Enlace a la primera lección del módulo (o al módulo si no tiene) -->
                             <a href="{{ route('admin.aula.show', ['curso_id' => $curso->id, 'leccion_id' => $modulo->lecciones->first()->id ?? '']) }}">
@@ -51,26 +45,18 @@
                                     imagen="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80"
                                 />
                             </a>
-                            
-                            <!-- Botón editar -->
-                            @if(in_array(Auth::user()->rol->nombre ?? '', ['admin', 'instructor']))
-                                <a href="{{ route('admin.modulos.edit', $modulo->id) }}" 
-                                class="absolute top-2 right-2 bg-black/50 hover:bg-black/80 backdrop-blur-md p-2 rounded-full text-white transition z-10">
-                                    <i class="bi bi-pencil-square text-sm"></i>
-                                </a>
-                            @endif
                         </div>
                     @endforeach
                 </div>
             </div>
 
-            <!-- Continue Progress (Lecciones del Módulo Actual con Scroll) -->
+            <!-- Lecciones del aodulo Actual  -->
             <div class="bg-white/5 rounded-3xl p-5 border border-white/10 flex flex-col max-h-[350px]">
-                <h2 class="text-white font-bold text-2xl mb-4 leading-tight flex-shrink-0">Continue<br>Progress</h2>
+                <h2 class="text-white font-bold text-2xl mb-4 leading-tight flex-shrink-0">Lecciones Por Modulo</h2>
                 
                 <!-- Contenedor con scroll -->
                 <div class="space-y-3 overflow-y-auto pr-2 custom-scrollbar">
-                    {{-- FILTRAMOS: Solo mostramos las lecciones del módulo actual --}}
+                    {{--: Solo mostramos las lecciones del módulo actual --}}
                     @php
                         // Obtenemos el módulo de la lección actual
                         $moduloActual = $leccionActual ? $leccionActual->modulo : $curso->modulos->first();
@@ -86,7 +72,6 @@
                                     progreso="{{ $leccion->duracion_min ?? 0 }} min"
                                 />
                             </a>
-                            <!-- ... botón editar ... -->
                         </div>
                     @endforeach
                 </div>
@@ -107,25 +92,17 @@
                     urlVideo="{{ $leccionActual->url_contenido ?? null }}"
                 />
 
-                @if($leccionActual && in_array(Auth::user()->rol->nombre ?? '', ['admin', 'instructor']))
-                    <a href="{{ route('admin.lecciones.edit', $leccionActual->id) }}" 
-                       class="absolute top-6 right-6 bg-white/20 hover:bg-white/40 backdrop-blur-md px-4 py-2 rounded-full text-white text-sm font-semibold transition flex items-center gap-2">
-                        <i class="bi bi-pencil-square"></i> Editar Lección
-                    </a>
-                @endif
             </div>
 
-            <!-- You Might Like (Scroll Horizontal) -->
             <div>
                 <div class="flex justify-between items-center mb-4">
-                    <h2 class="text-white font-bold text-2xl">You might like</h2>
-                    <button class="text-xs text-gray-400 hover:text-white transition">See all</button>
+                    <h2 class="text-white font-bold text-2xl">Todas Las Lecciones</h2>
                 </div>
                 
                 <!-- Contenedor con Scroll Horizontal -->
                 <div class="flex gap-4 overflow-x-auto pb-4 custom-scrollbar flex-nowrap">
                     {{-- Iteramos las lecciones del curso --}}
-                    @foreach($curso->modulos->flatMap->lecciones as $leccion)
+                    @foreach($curso->modulos->filter(fn ($m) => (bool) $m->activo)->flatMap->lecciones as $leccion)
                         <div class="relative group flex-shrink-0" style="width: 200px;"> {{-- Ancho fijo para cada tarjeta --}}
                             <a href="{{ route('admin.aula.show', ['curso_id' => $curso->id, 'leccion_id' => $leccion->id]) }}">
                                 <x-atomics.module-card 

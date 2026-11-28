@@ -18,7 +18,7 @@ class LeccionController extends Controller
         }
 
         $lecciones = $query->get();
-        $modulos = Modulo::with('curso')->get(); 
+        $modulos = Modulo::with('curso')->paginate(15); 
 
         return view('admin.lecciones.index', compact('lecciones', 'modulos'));
     }

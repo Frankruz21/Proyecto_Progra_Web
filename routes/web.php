@@ -24,6 +24,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('modulos', ModuloController::class)->except(['create']);
     Route::get('modulos/{modulo}/contenido', [ModuloController::class, 'contenido'])->name('modulos.contenido');
 
+    Route::patch('modulos/{modulo}/toggle', [ModuloController::class, 'toggle'])->name('modulos.toggle');
+
     // LECCIONES
     Route::resource('lecciones', LeccionController::class)
         ->except(['create'])

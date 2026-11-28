@@ -1,4 +1,4 @@
-<div class="card border-0 shadow-sm mt-2" style="background-color: #f8fafc;">
+<div id="lecciones-modulo-{{ $modulo->id }}" class="card border-0 shadow-sm mt-2" style="background-color: #f8fafc;">
     <div class="card-body p-3">
 
         <div class="d-flex justify-content-between align-items-center mb-3">
