@@ -20,6 +20,8 @@ return new class extends Migration
             $table->foreignId('curso_id')
                 ->constrained('cursos')
                 ->cascadeOnDelete();
+            
+            $table->foreignId('matricula_id')->constrained('matriculas')->cascadeOnDelete();
 
             // Cantidad de lecciones completadas
             $table->unsignedInteger('lecciones_completadas')->default(0);

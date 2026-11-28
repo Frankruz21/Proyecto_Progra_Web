@@ -54,9 +54,18 @@
                     </a>
                 @endif
 
+<<<<<<< HEAD
                 <button type="button" class="btn btn-success rounded-pill px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#modalCrearModulo">
                     <i class="bi bi-plus-lg me-1"></i> Nuevo Módulo
                 </button>
+=======
+                <!-- BOTÓN NUEVO MÓDULO -->
+                <x-atomics.expand-button
+                    texto="Nuevo Módulo"
+                    data-bs-toggle="modal"
+                    data-bs-target="#modalCrearModulo"
+                />
+>>>>>>> anderzon-2
             </div>
         </div>
 

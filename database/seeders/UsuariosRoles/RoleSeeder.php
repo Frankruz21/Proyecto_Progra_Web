@@ -4,6 +4,7 @@ namespace Database\Seeders\UsuariosRoles;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+//use App\Models\Rol;
 
 class RoleSeeder extends Seeder
 {
@@ -27,8 +28,20 @@ class RoleSeeder extends Seeder
                 'created_at' => $now,
                 'updated_at' => $now,
             ],
+            [
+                'nombre' => 'Instructor',
+                'descripcion' => 'Acceso la creacion y publicacion de cursos',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
+            [
+                'nombre' => 'Gestor Academico',
+                'descripcion' => 'Acceso estándar a la gestion y supervision de los cursos publicados',
+                'created_at' => $now,
+                'updated_at' => $now,
+            ],
         ];
-
+        
         DB::table('roles')->upsert(
             $roles,
             ['nombre'],

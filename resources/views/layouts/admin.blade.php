@@ -179,8 +179,9 @@
                         data-lte-toggle="treeview"
                         role="menu">
 
-                        <li class="nav-item">
-                            <a href="#" class="nav-link active">
+                       <li class="nav-item">
+                            <a href="{{ route('admin.dashboard') }}"
+                            class="nav-link {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-speedometer2"></i>
                                 <p>Dashboard</p>
                             </a>
@@ -189,7 +190,8 @@
                         <li class="nav-header">GESTIÓN ACADÉMICA</li>
 
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('admin.cursos.index') }}"
+                            class="nav-link {{ request()->routeIs('admin.cursos.*') ? 'active' : '' }}">
                                 <i class="nav-icon bi bi-book"></i>
                                 <p>Cursos</p>
                             </a>
@@ -225,10 +227,19 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <i class="bi bi-box-arrow-left"></i>
+                                <span>Cerrar sesión</span>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </li>
+
                     </ul>
                 </nav>
             </div>
-
         </aside>
 
         {{-- Contenido principal --}}

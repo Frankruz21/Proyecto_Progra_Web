@@ -10,7 +10,7 @@ class CourseCard extends Component
     public $descripcion;
     public $categoria;
     public $colorFondo;
-    public $cursoId; // <-- Agrega esto
+    public $cursoId; 
 
     public function __construct($titulo, $descripcion, $categoria, $colorFondo = '#143D60', $cursoId = null)
     {
@@ -25,4 +25,6 @@ class CourseCard extends Component
     {
         return view('components.course-card');
     }
+
+    
 }

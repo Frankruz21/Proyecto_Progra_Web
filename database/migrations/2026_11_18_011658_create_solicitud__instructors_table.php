@@ -26,6 +26,7 @@ return new class extends Migration
             $table->enum('estado',['pendiente', 'aprobada', 'rechazada'])->default('pendiente');
             $table->timestamp('fecha_revision')->nullable();
             $table->foreignId('revisado_por')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('user_id')->constrained('users');          
             $table->text('observaciones')->nullable();
             $table->timestamps();
         });

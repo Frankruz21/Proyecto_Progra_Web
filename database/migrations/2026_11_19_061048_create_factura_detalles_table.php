@@ -15,10 +15,9 @@ return new class extends Migration
                 ->constrained('facturas')
                 ->cascadeOnDelete();
 
-            $table->foreignId('curso_id')
-                ->nullable()
+            $table->foreignId('curso_id')->nullable()
                 ->constrained('cursos')
-                ->nullOnDelete();
+                ->restrictOnDelete();
 
             $table->string('descripcion');
             $table->decimal('cantidad', 10, 2)->default(1);
